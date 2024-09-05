@@ -7,6 +7,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+from shot import *
 def main():
     pygame.init()
     print("Starting asteroids!")
@@ -27,7 +28,9 @@ Screen height: {SCREEN_HEIGHT}
     AsteroidField.containers = (updatable)
     asteroid_field = AsteroidField()
 
-
+    shots = pygame.sprite.Group()
+    Shot.containers = (shots, updatable, drawable)
+    
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
