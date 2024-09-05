@@ -41,9 +41,13 @@ Screen height: {SCREEN_HEIGHT}
         for data in updatable:
             data.update(dt)
         for asteroid_particle in asteroids:
+            for bullet in shots:
+                if bullet.collision(asteroid_particle):
+                    bullet.kill()
+                    asteroid_particle.kill()
             if asteroid_particle.collision(player):
                 print("Game over!")
-                sys.exit("Oops, you crashed an asteroid! Try again next time!")
+                sys.exit("Oops, you crashed into an asteroid! Try again next time!")
         pygame.display.flip()
         dt = clock.tick(60)/1000
 if __name__ == "__main__":
