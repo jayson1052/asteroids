@@ -1,4 +1,5 @@
 import pygame
+import sys
 # this allows us to use code from
 # the open-source pygame library
 # throughout this file
@@ -36,6 +37,10 @@ Screen height: {SCREEN_HEIGHT}
             drawable_item.draw(screen)
         for data in updatable:
             data.update(dt)
+        for asteroid_particle in asteroids:
+            if asteroid_particle.collision(player):
+                print("Game over!")
+                sys.exit("Oops, you crashed an asteroid! Try again next time!")
         pygame.display.flip()
         dt = clock.tick(60)/1000
 if __name__ == "__main__":
