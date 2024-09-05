@@ -1,8 +1,4 @@
-import pygame
-import sys
-# this allows us to use code from
-# the open-source pygame library
-# throughout this file
+import pygame, random, sys 
 from constants import *
 from player import *
 from asteroid import *
@@ -44,7 +40,7 @@ Screen height: {SCREEN_HEIGHT}
             for bullet in shots:
                 if bullet.collision(asteroid_particle):
                     bullet.kill()
-                    asteroid_particle.kill()
+                    asteroid_particle.split()
             if asteroid_particle.collision(player):
                 print("Game over!")
                 sys.exit("Oops, you crashed into an asteroid! Try again next time!")
